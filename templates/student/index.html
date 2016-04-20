@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>STUDENT PORTAL</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style media="screen">
+    #footer{
+      background-color: rgb(19, 65, 170);
+color: white;
+padding: 3em;
+text-align: center;
+font-family: "Lato";
+letter-spacing: 2px;
+text-indent: 2px;
+    }
+      #top-content{
+        background-color: rgb(0, 44, 52);
+color: white;
+text-align: center;
+font-family: "Lato";
+font-size: 30px;
+font-weight: 900;
+letter-spacing: 3px;
+text-indent: 3px;
+padding: 1.5em;
+      }
+
+      .text{
+        font-family: "Lato";
+font-size: 20px;
+letter-spacing: 2px;
+font-weight: 600;
+padding: 1em;
+border: 3px dotted black;
+      }
+
+      .detail{
+        font-family: "PT Sans";
+        font-size: 14px;
+        padding: 2em;
+        text-indent: center;
+
+      }
+
+      .link{
+        font-family: "Lato";
+        font-weight: 900;
+        letter-spacing: 1px;
+        padding: 1em;
+        background-color: aliceblue;
+      }
+
+      .link:hover{
+        background-color: skyblue;
+      }
+      .content{
+        height: 450px;
+         background-image: url('{% static '1.jpg' %}');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="top-content">
+        STUDENT PORTAL
+    </section>
+
+
+    <div class="container content">
+      <div class="row">
+        <div class="col-md-6"><br><br><br>
+          <div class="textstuff">
+            <span class="text">REGISTER</span>
+          </div>
+          <div class="detail">
+            JUST A ONE SECOND PROCEDURE
+          </div>
+          <div class="linkstuff">
+           <a href="/student/register"> <span class="link">GO TO REGISTER</span>
+          </div></a>
+        </div>
+        <div class="col-md-6">
+          <br><br><br>
+            <div class="textstuff">
+              <span class="text">LOGIN</span>
+          </div>
+          <div class="detail">
+            JUST A TWO SECOND PROCEDURE
+          </div>
+          <div class="linkstuff">
+           <a href="/student/login"> <span class="link">GO TO LOGIN</span>
+         </a> </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="footer">
+
+        <div class="footer">
+          WEBSITE FOR SENTIMENT ANALYSIS AND COLLEGE ATTENDANCE PORTAL
+        </div>
+
+
+
+    </section>
+  </body>
+</html>

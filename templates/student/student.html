@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <title>Student Dashboard</title>
+
+            <style media="screen">
+    .enroldata{
+      background-color: rgb(30, 50, 96);
+color: white;
+padding: 3em;
+font-family: "Lato";
+font-weight: 900;
+letter-spacing: 3px;
+    }
+    .en-number{
+      font-size: 31px;
+    }
+    .list_objects{
+      background-color: rgb(10, 27, 66);
+color: white;
+font-family: "Lato";
+font-size: 15px;
+padding: 1em;
+letter-spacing: 2px;
+font-weight: 800;
+    }
+    fa{
+
+    padding: 2em !important;
+    }
+    .details{
+      letter-spacing: 1px;
+font-size: 12px;
+font-weight: 500;
+text-align: center;
+    }
+    .container{
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+    #footer{
+      background-color: rgb(19, 65, 170);
+color: white;
+padding: 3em;
+text-align: center;
+font-family: "Lato";
+letter-spacing: 2px;
+text-indent: 2px;
+    }
+    .sidebar{
+      height:550px;
+      background-color: rgb(10, 27, 66);
+    }
+    .content{
+      height:550px;
+      padding: 4em;
+    }
+    .list_objects:hover{
+      background-color: #011239;
+      cursor: pointer;
+    }
+    .enroldata:hover{
+      background-color: #041d58;
+      cursor: pointer;
+    }
+    form{
+      padding: 4em;
+text-align: center;
+font-family: "Lato";
+font-size: 24px;
+font-weight: 800;
+letter-spacing: 2px;
+text-indent: 2px;
+    }
+
+  input[type="checkbox"]{
+      border: 0px none;
+width: 100%;
+height: 2em;
+}
+
+
+  input[type="submit"]  {
+      background-color: midnightblue;
+border: none;
+color: white;
+text-transform: uppercase;
+letter-spacing: 1px;
+text-indent: 1px;
+box-shadow: 5px 5px 10px #888888;
+    }
+    .en-number-details{
+      font-weight: 800;
+font-size: 20px;
+    }
+.profiledetails{
+  padding: 4em;
+font-family: "Lato";
+}
+    .studentdetails{
+      font-weight: 800;
+border-left: 3px solid midnightblue !important;
+padding: 1em;
+    }
+    table{
+      font-size: 20px !important;
+font-family: "Lato" !important;
+text-transform: uppercase;
+
+    }
+    </style>
+
+</head>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 sidebar">
+            <div class="row enroldata ">
+              <div class="enrollment">
+                  ENROLLMENT NUMBER
+              </div>
+              <div class="en-number">
+                {{enrol}}
+              </div>
+            </div>
+            <div class="row list_objects profile">
+            <i class="fa fa-user" style="padding: 1em;" aria-hidden="true"></i>  PROFILE
+            <div class="details">
+              DETAILS ABOUT USER PROFILE
+            </div>
+            </div>
+            <div class="row list_objects attendancediv">
+            <i class="fa fa-file-text" style="padding: 1em;" aria-hidden="true"></i>  ATTENDANCE
+            <div class="details">
+              ATTENDANCE GRAPH
+            </div>
+            </div>
+            <div class="row list_objects resultdiv">
+            <i class="fa fa-dot-circle-o" style="padding: 1em;" aria-hidden="true"></i>  RESULT
+            <div class="details">
+                RESULT ANALYSIS
+            </div>
+            </div>
+              <a href="/student/logout/"><div class="row list_objects">
+            <i class="fa fa-car" style="padding: 1em;" aria-hidden="true"></i> LOGOUT
+            <div class="details">
+
+            </div>
+            </div></a>
+          </div>
+          <div class="col-md-9 content">
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="footer">
+
+        <div class="footer">
+          WEBSITE FOR SENTIMENT ANALYSIS AND COLLEGE ATTENDANCE PORTAL
+        </div>
+
+
+
+    </section>
+
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    var enrol = {{ enrol | safe}};
+    console.log({{ marks | safe}});
+    var array_2 = {{marks |safe}}
+    var array = {{ attendance |safe}};
+    console.log(array);
+   //var data = {{ attendance | safe }};
+    //console.log(data);
+
+
+    $(document).ready(function(){
+         google.charts.load('current', {'packages':['bar', 'table']});
+    $('.enroldata').click(function(){
+      $('.content').html('<form id="login_form" method="post" action="/student/attendance/"><br><input type="checkbox" name="present" value="on"> MARK ATTENDANCE<br><input type="text" name ="enrol" value="{{enrol}}"><br><br><input type="submit" value="submit" /></form>');
+    });
+
+    $('.profile').click(function(){
+      $('.content').html('<div class="profiledetails"><div class="studentdetails">STUDENT DETAILS</div><div class="enrollment-number">ENROLLMENT NUMBER</div><div class="en-number-details">' + enrol + '</div></div>');
+
+
+    });
+
+    $('.attendancediv').click(function(){
+      $('.content').html('<div id="barchart_material"style="width: 500px; height: 400px;"></div>');
+      drawChart();
+    })
+
+    $('.resultdiv').click(function(){
+      $('.content').html('<div class="row"><div class="col-md-6"><div id="barchart_material_2"style="width: 500px; height: 400px;"></div></div><div class="col-md-6"><div id="table_div"></div></div></div>');
+      drawChart_2();
+    });
+
+
+    function drawChart(){
+      var list = Object.keys(array[0]["fields"])
+      var chartData = [];
+      chartData.push(["SUBJECTS", "ATTENDANCE"]);
+      i=0
+      list.forEach(function(data){
+        if(i<5)
+        chartData.push([data, array[0]["fields"][data]]);
+        i++;
+
+      });
+      console.log(chartData);
+      var data = google.visualization.arrayToDataTable(chartData);
+      var options = {
+          chart: {
+            title: 'STUDENT\'s ATTENDANCE GRAPH',
+            subtitle: 'Y-AXIS: NO. OF DAYS',
+          },
+          bars: 'vertical' // Required for Material Bar Charts.
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        chart.draw(data, options);
+    }
+
+    function drawChart_2(){
+      var list = Object.keys(array_2[0]["fields"])
+      console.log(array_2[0]["fields"])
+      var chartData = [];
+      chartData.push(["SUBJECTS", "MARKS"]);
+      i=0
+      list.forEach(function(data){
+
+        if(i<5)
+        chartData.push([data, array_2[0]["fields"][data]]);
+        i++;
+
+      });
+      console.log(chartData);
+      var data = google.visualization.arrayToDataTable(chartData);
+      var options = {
+          chart: {
+            title: 'STUDENT\'s RESULT GRAPH',
+            subtitle: 'X-AXIS: MARKS OUT OF 70',
+          },
+          bars: 'horizontal' // Required for Material Bar Charts.
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material_2'));
+
+        chart.draw(data, options);
+
+
+        chartData2 = [];
+
+        i=0
+        var status = "";
+        list.forEach(function(data){
+
+          if(array_2[0]["fields"][data]>30){
+            status = true
+          }
+          else{
+            status = false
+          }
+          if(i<5)
+          chartData2.push([data, array_2[0]["fields"][data], status]);
+          i++;
+          console.log(chartData2);
+        })
+        data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Subject ');
+        data2.addColumn('number', 'Marks');
+        data2.addColumn('boolean', 'Pass');
+        data2.addRows(chartData2);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data2, {showRowNumber: true, width: '100%', height: '100%'});
+
+    }
+    });
+</script>

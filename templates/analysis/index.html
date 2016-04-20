@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SENTIMENTAL ANALYSIS</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{% static 'sentiment-script.js' %}"></script>
+    <style media="screen">
+
+
+    #footer{
+      background-color: rgb(19, 65, 170);
+color: white;
+padding: 3em;
+text-align: center;
+font-family: "Lato";
+letter-spacing: 2px;
+text-indent: 2px;
+    }
+      #top-content{
+        background-color: rgb(0, 44, 52);
+color: white;
+text-align: center;
+font-family: "Lato";
+font-size: 30px;
+font-weight: 900;
+letter-spacing: 3px;
+text-indent: 3px;
+padding: 1.5em;
+      }
+
+.content{
+  height:1000px;
+  background-image: url('{% static '1.jpg'%}');
+  background-size: contain;
+  text-align: center;
+  background-repeat: no-repeat;
+}
+button{
+  background-color: midnightblue;
+border: none;
+box-shadow: 5px 5px 10px skyblue;
+color: white;
+padding: 1em;
+font-family: "Lato";
+font-size: 20px;
+}
+#tagline{
+  font-size:18px !important;}
+    </style>
+  </head>
+  <body>
+    <section id="top-content">
+     KNOW ABOUT PUBLIC OPINION
+     <div id="tagline">
+         ANALYZE SENTIMENTS FROM THE FACEBOOK POSTS OF USICT
+     </div>
+    </section>
+
+    <div class="container content">
+
+      <div class="row">
+        <div class="col-md-6">
+          <br>
+            <br>
+          <button class="searchText" id="search" type="submit">FETCH DATA FROM SOCIAL MEDIA</button>
+
+        </div>
+        <div class="col-md-6">
+          <br>
+          <br>
+
+          <button class="showGraph" id="showGraph" type="submit">SHOW SENTIMENT GRAPH</button>
+
+        </div>
+      </div>
+      <div class="row">
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <br>
+        <div id="piechart_3d" style="width: 900px; height: 300px;"></div>
+
+      </div>
+    </div>
+
+    <section id="footer">
+
+        <div class="footer">
+          WEBSITE FOR SENTIMENT ANALYSIS AND COLLEGE ATTENDANCE PORTAL
+        </div>
+
+
+
+    </section>
+
+  </body>
+</html>

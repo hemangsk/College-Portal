@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Student Registration</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+
+        <style>
+      #top-content{
+        background-color: rgb(0, 44, 52);
+color: white;
+text-align: center;
+font-family: "Lato";
+font-size: 30px;
+font-weight: 900;
+letter-spacing: 3px;
+text-indent: 3px;
+padding: 1.5em;
+      }
+        #footer{
+      background-color: rgb(19, 65, 170);
+color: white;
+padding: 3em;
+text-align: center;
+font-family: "Lato";
+letter-spacing: 2px;
+text-indent: 2px;
+    }
+    input{
+    font-size:24px;
+    font-family:"Lato";
+
+    }
+
+    form{
+    font-size:15px;
+    font-family:"Lato";
+    font-weight:900;
+    letter-spacing:1px;
+    text-align:center;
+    text-transform:uppercase;
+    padding:2em;
+
+    }
+    input[type="submit"]{
+    text-transform:uppercase;
+    border:none;
+    padding:0.5em;
+    background-color:skyblue;
+
+    }
+    .tagline{
+    font-family:"Lato";
+    font-size:20px !important;
+
+    }
+
+    .content{
+    height: 450px;
+        background-image: url('{% static '1.jpg' %}');
+        background-size: contain;
+        background-repeat: no-repeat;
+
+    }
+</style>
+    </head>
+
+    <body>
+<section id="top-content">
+        STUDENT PORTAL
+    <div class="tagline">REGISTRATION</div>
+    </section>
+<div class="content">
+
+     {% if registered %}
+         <strong>Thank you for registering!</strong>
+        <a href="/student/">Return to the homepage.</a><br />
+        {% else %}
+
+
+        <form id="user_form" method="post" action="/student/register/"
+                enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+
+            <!-- Provide a button to click to submit the form. -->
+            <input type="submit" name="submit" value="Register" />
+        </form>
+        {% endif %}
+
+
+</div>
+
+    <section id="footer">
+
+        <div class="footer">
+          WEBSITE FOR SENTIMENT ANALYSIS AND COLLEGE ATTENDANCE PORTAL
+        </div>
+
+
+
+    </section>
+    </body>
+</html>
